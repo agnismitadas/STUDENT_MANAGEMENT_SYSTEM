@@ -1,0 +1,13 @@
+<div class="container py-8 shadow-lg p-3">
+  <div class="p-5 bg-body-tertiary rounded-3" style="background-image: url('https://img.freepik.com/free-photo/concept-back-school-teacher-s-day-idea-pens-pencils-books-alarm-clock-table-against-background-gray-board-with-copy-space_166373-2803.jpg'); background-size: cover; background-position: center;">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Student Management System</h1>
+      <p class="col-md-8 fs-4 fst-italic">Using a series of utilities, you can create and manage students and their respective courses and projects</p>
+      <% if admin_user_signed_in? %>
+      
+      <% else %>
+      <a href="<%= new_admin_user_session_path %>" class="btn btn-success" role="button">Login</a>
+    <% end %>    
+      </div>
+  </div>
+</div>

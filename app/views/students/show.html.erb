@@ -1,0 +1,47 @@
+<div class="col-lg-12">
+<div class="card rounded-3 shadow mt-4 mb-4">
+<div class="card body px-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Student Detail</h1>
+      <p><strong>Name:</strong><%= @student.full_name %></p>
+      <p><strong>Email:</strong><%= @student.email %></p>
+      <p><strong>Address:</strong><%= @student.address %></p>
+      <p><strong>Date Of Birth:</strong><%= formatted_date(@student.dateOfbirth) %></p>
+      <p><strong>Age:</strong><%= @student.age %></p>
+      <p><strong>Contact Number:</strong><%= @student.phonenumber %></p>
+      <h2>Enrolled Courses:</h2>
+      <ul>
+        <% @all_courses.each do |course| %>
+          <li><%= course.name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4 text-end">
+      <% if @student.profile_image.attached? %>
+        <%= image_tag @student.profile_image, style: "width:100px;height:200px" %>
+        <ul><%= link_to "Download", @student.profile_image, download:'' %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-between">
+        <div>
+          <%= link_to 'Back', students_path, class: "btn btn-outline-primary btn-sm" %>
+        </div>
+        <div>
+          <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-outline-secondary btn-sm" %>
+        </div>
+        <div>
+          <%= link_to 'Delete', student_path(@student), class: "btn btn-outline-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+

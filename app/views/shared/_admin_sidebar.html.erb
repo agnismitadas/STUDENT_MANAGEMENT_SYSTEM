@@ -1,0 +1,27 @@
+    <div class="sidebar">
+            <div class="profile">
+                    <img src="https://w1.pngwing.com/pngs/743/500/png-transparent-circle-silhouette-logo-user-user-profile-green-facial-expression-nose-cartoon.png" alt="profile_picture">
+                    <h3>Admin</h3>
+                    <p>welcome!</p>
+                </div>
+            <ul>
+                <li>
+                    <a href="<%= dashboard_path %>">
+                    <i class="fas fa-home menu-icon"></i>
+                    <span class="menu-item">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%= admin_students_path %>">
+                    <i class="fas fa-users menu-icon"></i>
+                    <span class="menu-item">Students</span>
+                    </a>
+                </li>
+                <li>
+                <% if admin_user_signed_in? %>
+                    <%=link_to "Sign Out", destroy_admin_user_session_path, 'data-turbo-method': :delete, class:"nav-link" %>
+                <% end %>
+                </li>
+            </ul>
+        </div>
+    </div>

@@ -1,0 +1,71 @@
+
+    <%= form_with model: @student do |form| %>
+        
+        <div class="form-group">
+            <%= form.label :first_name %>
+            <%= form.text_field :first_name , class:"form-control"%>
+            <% @student.errors.full_messages_for(:first_name).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name ,class:"form-control"%>
+            <% @student.errors.full_messages_for(:last_name).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :email %>
+            <%= form.email_field :email,class:"form-control" %>
+            <% @student.errors.full_messages_for(:email).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :address %><br>
+            <%= form.text_field :address ,class:"form-control" %>
+            <% @student.errors.full_messages_for(:address).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :dateOfbirth%>
+            <%= form.date_field :dateOfbirth ,class:"form-control"%>
+            <% @student.errors.full_messages_for(:dateOfbirth).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :phonenumber %>
+            <%= form.text_field :phonenumber,class:"form-control" %>
+            <% @student.errors.full_messages_for(:phonenumber).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :profile_image %></br>
+            <%= form.file_field :profile_image %>
+            <% @student.errors.full_messages_for(:profile_image).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+
+        <div>
+            <strong>Select Courses:</strong><br>
+            <% all_courses.each do |course| %>
+            <%= check_box_tag 'student[course_ids][]', course.id, @student.courses.include?(course) %>
+            <%= course.name %><br>
+            <% end %>
+        </div>
+
+        <div class="form-group mt-2" >
+            <%= form.submit  class:"btn btn-primary"%>
+        </div>
+    <% end %>
